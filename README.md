@@ -15,6 +15,8 @@ It covers:
 
 This is ideal for beginners who want to see all fundamental Java concepts working together in one place.
 
+P.S. This is an ongoing project. I will continue to add more examples, features, and exercises as I learn and explore more Java concepts.
+
 ---
 
 
@@ -59,4 +61,9 @@ User Input: Reads integers, doubles, and strings using Scanner.
 
 ## Author
 
-Abhay Singhal
+Abhay Singhal  
+<a href="https://www.linkedin.com/in/singhalabhay/" target="_blank">
+<img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" width="20" height="20" style="vertical-align:middle;">
+</a>
+
+
