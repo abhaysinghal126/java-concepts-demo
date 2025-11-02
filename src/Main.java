@@ -1,42 +1,95 @@
 import java.util.*;
 
 /**
- * This is a simplified Java fundamentals demo.
- * It demonstrates:
- * - Classes and objects
- * - Static methods
- * - Method overloading
- * - Basic arithmetic and string operations
- * - Printing various data types
+ * =============================================================
+ *  Java Fundamentals Demonstration
+ *  -------------------------------------------------------------
+ *  This program showcases essential Java concepts, including:
+ *  - Classes and objects
+ *  - Static methods
+ *  - Method overloading
+ *  - Basic arithmetic and string operations
+ *  - Input and output handling
+ *  - Conditional logic (if-else, ternary operator)
  *
- * The static method 'print' can print different types of values:
- * strings, numbers, booleans, and other objects.
+ *  Features:
+ *  - The {@code print()} method can display any type of object.
+ *  - The {@code add()} method is overloaded for multiple data types.
+ *  - The {@code isOdd()} method determines if a number is odd or even.
+ *  - The {@code input()} method reads user input from the console.
  *
- * The static method 'add' is overloaded to perform addition for:
- * - int
- * - double
- * - float
- * - long
- * - String (concatenation)
+ *  This file demonstrates clean, readable Java fundamentals with
+ *  reusable static utility methods.
  *
- * @author Abhay Singhal
+ *  @author  Abhay Singhal
+ *  @version 1.1
+ *  @since   2025-11-02
+ * =============================================================
  */
 public class Main {
 
+    /** Shared Scanner instance for input across all methods. */
+    static Scanner scanner = new Scanner(System.in);
+
+    // =============================================================
+    // Utility Methods
+    // =============================================================
+
     /**
-     * Prints any object using a static method.
-     * This method is flexible and can print values of different types:
-     * - Strings
-     * - Integers
-     * - Doubles
-     * - Booleans
-     * - Any other Object
+     * Prints any object to the console.
+     * <p>
+     * Demonstrates method overloading and dynamic typing
+     * through the use of {@code Object} parameters.
      *
-     * @param obj The object to print
+     * @param obj The object to print (can be of any type)
      */
     static void print(Object obj) {
         System.out.println(obj);
     }
+
+    /**
+     * Prompts the user for input and returns the response as an Object.
+     * <p>
+     * The returned value is a String by default and may be type-cast
+     * by the caller if needed.
+     *
+     * @param prompt The message displayed to the user
+     * @return The user's input as an Object (typically a String)
+     */
+    static Object input(Object prompt) {
+        System.out.println(prompt);
+        return scanner.nextLine();
+    }
+
+    // =============================================================
+    // Conditional Logic
+    // =============================================================
+
+    /**
+     * Determines whether an integer is odd or even.
+     *
+     * @param num The integer to evaluate
+     * @return A message stating whether the number is odd or even
+     */
+    static String isOdd(int num) {
+        return (num % 2 != 0) ? "It's odd!" : "It's even!";
+    }
+
+    /**
+     * Determines whether a long value is odd or even.
+     * <p>
+     * Demonstrates method overloading with different numeric types.
+     *
+     * @param num The long integer to evaluate
+     * @return A message stating whether the number is odd or even
+     */
+    static String isOdd(long num) {
+        return (num % 2 != 0) ? "It's odd!" : "It's even!";
+    }
+
+    // =============================================================
+    // Arithmetic Operations (Method Overloading)
+    // =============================================================
 
     /**
      * Adds two integers and returns the sum.
@@ -87,36 +140,41 @@ public class Main {
      *
      * @param a First string
      * @param b Second string
-     * @return Concatenation of a and b
+     * @return Concatenated string
      */
     static String add(String a, String b) {
         return String.valueOf(a) + String.valueOf(b);
     }
 
+    // =============================================================
+    // Main Method
+    // =============================================================
+
     /**
-     * Entry point of the program.
-     * Demonstrates using the static 'print' and 'add' methods with different types of values.
+     * The program's entry point.
+     * <p>
+     * Demonstrates the use of static methods for input, output,
+     * condition checks, and arithmetic operations.
      *
-     * @param args Command line arguments
+     * @param args Command line arguments (not used)
      */
     public static void main(String[] args) {
 
-        // Printing different types using the static 'print' method
-        print("Hello, World!");  // Printing a string
-        print(42);               // Printing an integer
-        print(3.14);             // Printing a double
-        print(true);             // Printing a boolean
+        // Example: prompt user for a number and check odd/even
+        int num = Integer.parseInt((String) input("Enter a number:"));
+        print(isOdd(num));
 
-        // Demonstrates that you can also print objects
-        Date now = new Date();
-        print(now);              // Printing a Date object
+        // Example: method overloading with hard-coded inputs
+        print(isOdd(2));                      // Even check
+        print(add(1, 2));                     // Integer addition
+        print(add("Hello, ", "World!"));      // String concatenation
+        print(add(3.0, 0.14));                // Double addition
+        print(add(123456789L, 987654321L));   // Long addition
 
-        // Using overloaded 'add' methods
-        print(add(1, 2));                     // Adds two integers
-        print(add("Hello, ", "World!"));      // Concatenates two strings
-        print(add(3.0, 0.14));                // Adds two doubles
-        print(add(123456789L, 123456789L));  // Adds two long values
+        // Example: print any object type
+        print(new Date());                    // Prints current date
 
-        // Demonstrates flexibility: 'print' can handle return values from any 'add' method
+        // Note: Scanner intentionally not closed to allow reuse
+        // across methods for simplicity in demonstration
     }
 }
